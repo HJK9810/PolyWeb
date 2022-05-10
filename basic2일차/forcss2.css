@@ -1,11 +1,41 @@
+/* 태그 셀랙터 */
 body {
-    background-color: aliceblue;
+    background-color: pink;
 }
 
 div {
-    background-color: lightcoral;
+    background-color: red;
 }
 
 p{
-    background-color: aqua;
+    color: blue;
+}
+
+/* class 셀랙터 -자주사용 */
+.red-text{
+    color: red;
+}
+
+.yellow-text{
+    color: yellow;
+}
+
+.big-size{
+    font-size: 50px;
+    /* color: blue; */
+}
+/* 태그.클래스명 -> 해당 태그중에서 그 클래스만 적용 */
+.border{
+    border-style: dotted;
+    border-width: 3px;
+}
+
+p.border{
+    border-style: solid;
+    border-width: 1px;
+}
+
+/* id 셀랙터 - 많이 사용X */
+#div1 {
+    background-color: lightskyblue;
 }
