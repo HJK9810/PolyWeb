@@ -1,4 +1,8 @@
 /* class */
+.article{
+    font-size: large;
+}
+
 .highlight{
     background-color: yellow;
 }
@@ -7,8 +11,15 @@
     text-decoration: underline;
 }
 
+.language{
+    font-family:'Times New Roman', Times, serif
+}
+.web{
+    font-style: italic;
+}
 /* id */
 #name_title{
+    font-family:'Times New Roman', Times, serif;
     text-align: center;
 }
 #article_from{
