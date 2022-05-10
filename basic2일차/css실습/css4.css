@@ -1,0 +1,16 @@
+/* class */
+.highlight{
+    background-color: yellow;
+}
+.link_line{
+    color: blue;
+    text-decoration: underline;
+}
+
+/* id */
+#name_title{
+    text-align: center;
+}
+#article_from{
+    text-align: right;
+}
