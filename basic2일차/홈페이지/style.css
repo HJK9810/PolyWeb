@@ -1,0 +1,60 @@
+/* 태그 */
+h2{
+    color: plum;
+    font-style: oblique;
+    text-align: center;
+}
+
+iframe{
+    width: 100%;
+}
+/* 태그-type */
+input[type="button"] {
+    width: 100px;
+    height: 40px;
+    border-style: solid;
+    border-radius: 30px;
+    background-color: antiquewhite;
+}
+
+/* playlsit */
+.playlist{
+    width: 100%;
+}
+.row{
+    width: 100%;
+}
+.part{
+    width: 33%;
+}
+.part{
+    width: 30%;
+}
+/* submit */
+.radio{
+    border-style: solid;
+    border-width: 1px;
+}
+.submit{
+    width: 100px;
+    height: 40px;
+    color: whitesmoke;
+    background-color: red;
+    border-style: none;
+}
+.reset{
+    width: 100px;
+    height: 40px;
+    color: whitesmoke;
+    background-color: grey;
+    border-style: none;
+}
+
+/* id */
+#mainHome{
+    text-align: right;
+}
+#mainHome img{
+    width: 50px;
+    height: 50px;
+}
