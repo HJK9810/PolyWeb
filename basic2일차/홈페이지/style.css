@@ -11,8 +11,7 @@ iframe{
 /* 태그-type */
 input[type="button"] {
     width: 100px;
-    height: 40px;
-    border-style: solid;
+    height: 30px;
     border-radius: 30px;
     background-color: antiquewhite;
 }
@@ -27,11 +26,10 @@ input[type="button"] {
 .part{
     width: 33%;
 }
-.part{
-    width: 30%;
-}
 /* submit */
 .radio{
+    line-height: 200%;
+    padding: 1px;
     border-style: solid;
     border-width: 1px;
 }
