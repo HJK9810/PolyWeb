@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>회원가입</title>
+    </head>
+    <body>
+        <form action="./home.html">
+            <table width="800">
+                <tr>
+                    <td rowspan="6" width="100"></td>
+                    <td><input type="text" placeholder="이름" /></td>
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="아이디" /></td>
+                </tr>
+                <tr>
+                    <td><input type="password" placeholder="비밀번호" /> <a href="">비밀번호도움말</a></td>
+                </tr>
+                <tr>
+                    <td><input type="password" placeholder="비밀번호 재입력" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        <select name="" id="cellPhone">
+                            <option>휴대폰번호 선택</option>
+                            <option>010</option>
+                            <option>011</option>
+                            <option>016</option>
+                            <option>017</option>
+                            <option>018</option>
+                            <option>019</option>
+                        </select>
+                        - <input type="text" size="4" /> - <input type="text" size="4" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" placeholder="이메일" /> @
+                        <select name="" id="eamil">
+                            <option>선택</option>
+                            <option>gmail.com</option>
+                            <option>outlook.kr</option>
+                            <option>hotmail.com</option>
+                            <option>icloud.com</option>
+                            <option>naver.com</option>
+                            <option>daum.net</option>
+                            <option>kakao.com</option>
+                            <option>nate.com</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <select name="" id="HousePhone">
+                <option>전화번호</option>
+                <option>02</option>
+                <option>031</option>
+                <option>032</option>
+                <option>033</option>
+                <option>041</option>
+                <option>042</option>
+                <option>043</option>
+                <option>044</option>
+                <option>051</option>
+                <option>052</option>
+                <option>053</option>
+                <option>054</option>
+                <option>055</option>
+                <option>061</option>
+                <option>062</option>
+                <option>063</option>
+                <option>064</option>
+            </select>
+            - <input type="text" size="4" /> - <input type="text" size="4" /><br />
+            <select name="" id="cellPhone">
+                <option>휴대폰 번호</option>
+                <option>010</option>
+                <option>011</option>
+                <option>016</option>
+                <option>017</option>
+                <option>018</option>
+                <option>019</option>
+            </select>
+            - <input type="text" size="4" /> - <input type="text" size="4" /> <input type="button" value="휴대폰 인증" /><br />
+            <label>
+                <input type="radio" id="now" name="handPhone" /><label for="now">인증받은 휴대폰 번호를 대표번호로 사용 </label> <input type="radio" id="another" name="handPhone" /><label
+                    for="another"
+                    >다른번호 등록
+                </label>
+                <input type="radio" id="later" name="handPhone" /><label for="later">다음에 등록함 </label>
+            </label>
+            <br />
+            <input type="text" placeholder="우편번호" /> <input type="button" value="주소찾기" />
+            <br />
+            <br />
+            <br />
+            <br />
+            <input type="submit" value="가입신청" class="submit" />
+            <input type="reset" value="취소" class="reset" />
+        </form>
+    </body>
+</html>
