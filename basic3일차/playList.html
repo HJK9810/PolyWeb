@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>플레이리스트</title>
+    </head>
+
+    <body>
+        <div>
+            <table>
+                <h2>mp4 플레이 리스트</h2>
+                <tr>
+                    <td><video src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" controls></video></td>
+                    <td><video src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" controls></video></td>
+                    <td><video src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" controls></video></td>
+                </tr>
+            </table>
+            <table>
+                <h2>유튜브 플레이 리스트</h2>
+                <tr>
+                    <td>
+                        <iframe
+                            src="https://www.youtube.com/embed/3b7zEV9qSdg"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                        ></iframe>
+                    </td>
+                    <td>
+                        <iframe
+                            src="https://www.youtube.com/embed/AN95gQMATls"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                        ></iframe>
+                    </td>
+                    <td>
+                        <iframe
+                            src="https://www.youtube.com/embed/PXaS3ngtFQU"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                        ></iframe>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <style>
+            div {
+                border-style: solid;
+            }
+
+            table {
+                width: 100%;
+            }
+            tr {
+                width: 100%;
+            }
+            td {
+                width: 33%;
+            }
+
+            video {
+                width: 100%;
+            }
+            iframe {
+                width: 100%;
+            }
+        </style>
+    </body>
+</html>
