@@ -12,10 +12,7 @@
                 /* display: inlie => 옆으로 나열 -> span의 default*/
                 /* display: inline-block => 옆으로 나열. 단, 크기조절 가능! */
                 display: inline-block;
-                height: 100px;
                 border: 1px red solid;
-                padding-left: 10px;
-                margin: 10px;
             }
             span {
                 /* display: block => 새로로 나열 -> div의 default */
@@ -25,17 +22,22 @@
 
             div.div1 {
                 background-color: pink;
-                margin: 0;
-                padding: 0;
-                height: auto;
                 display: inline;
                 position: relative;
                 left: 30px;
                 top: 30px;
             }
+
+            div.div2 {
+                background-color: pink;
+                position: fixed;
+                right: 0;
+                bottom: 0;
+            }
         </style>
 
         <div class="div1">div1</div>
+        <div class="div2">div2</div>
         <div>div</div>
         <div>div</div>
         <span>span</span>
