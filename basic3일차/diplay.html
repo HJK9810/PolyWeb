@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <style>
+            div {
+                /* display: inlie => 옆으로 나열 -> span의 default*/
+                /* display: inline-block => 옆으로 나열. 단, 크기조절 가능! */
+                display: inline-block;
+                height: 100px;
+                border: 1px red solid;
+                padding-left: 10px;
+                margin: 10px;
+            }
+            span {
+                /* display: block => 새로로 나열 -> div의 default */
+                display: block;
+                height: 200px;
+            }
+
+            div.div1 {
+                background-color: pink;
+                margin: 0;
+                padding: 0;
+                height: auto;
+                display: inline;
+                position: relative;
+                left: 30px;
+                top: 30px;
+            }
+        </style>
+
+        <div class="div1">div1</div>
+        <div>div</div>
+        <div>div</div>
+        <span>span</span>
+        <span>span</span>
+        <h1>h1</h1>
+        <h1>h1</h1>
+        <header>header</header>
+        <footer>footer</footer>
+    </body>
+</html>
