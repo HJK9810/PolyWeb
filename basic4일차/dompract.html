@@ -15,6 +15,23 @@
                 font-size: small;
             }
         </style>
+
+        <button onclick="getTag()">tag 얻기</button>
+        <button onclick="getTitle()">title 얻기</button>
+        <button onclick="getitems()">item 얻기</button>
+        <button onclick="changeTxt()">글자크기 바꾸기</button>
+
+        <h1 id="title">hello World</h1>
+
+        <ul>
+            <li class="item">1</li>
+            <li class="item">2</li>
+            <li class="item">3</li>
+            <li class="item">4</li>
+        </ul>
+
+        <div class="small-text" id="target">Hello</div>
+
         <script>
             function getTag() {
                 document.write("<h1>helloWorld</h1>");
@@ -42,21 +59,5 @@
                 else document.getElementById("target").className = "small-text";
             }
         </script>
-
-        <button onclick="getTag()">tag 얻기</button>
-        <button onclick="getTitle()">title 얻기</button>
-        <button onclick="getitems()">item 얻기</button>
-        <button onclick="changeTxt()">글자크기 바꾸기</button>
-
-        <h1 id="title">hello World</h1>
-
-        <ul>
-            <li class="item">1</li>
-            <li class="item">2</li>
-            <li class="item">3</li>
-            <li class="item">4</li>
-        </ul>
-
-        <div class="small-text" id="target">Hello</div>
     </body>
 </html>
