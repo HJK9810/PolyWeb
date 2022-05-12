@@ -1,0 +1,1 @@
+const showName = () => alert('yourname');

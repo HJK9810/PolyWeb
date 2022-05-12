@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <input type="button" value="버튼" onclick="alert(1)" />
+        <button onclick="alrm()">버튼</button>
+        <button ondblclick="showName()">더블클릭</button>
+        <script>
+            let i = 10;
+            let name = "John";
+            // 전통적 문자열 병합
+            let result = name + "은 " + i + "살 입니다.";
+            console.log(result);
+            // 최근 문자열 병합
+            result = `${name}은 ${i}살 입니다.`;
+            console.log(result);
+
+            function alrm() {
+                // alert(`111`);
+                console.log("경고");
+            }
+        </script>
+    </body>
+</html>
