@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <style>
+            /* 태그용 */
+            h1 {
+                /* 글자 중앙정렬 */
+                text-align: center;
+                margin: 100px;
+            }
+            button {
+                /* 버튼용 div에 크기 맞추기 */
+                width: 100%;
+            }
+            /* class 용 */
+            .container {
+                /* 버튼 그룹들 중앙정렬 */
+                display: flex;
+                width: 100%;
+                justify-content: center;
+            }
+            .color {
+                /* 각 버튼의 크기등 조절 */
+                display: inline-block;
+                width: 30%;
+                height: 50px;
+                margin: 5px;
+            }
+            /* 색 변경용 class 모음 */
+            .red {
+                color: red;
+            }
+            .blue {
+                color: blue;
+            }
+            .green {
+                color: green;
+            }
+        </style>
+
+        <div id="text"></div>
+        <!-- h1 삽입용 -->
+        <div class="container">
+            <!-- 줄맞추기용 -->
+            <div class="color"></div>
+            <!-- 각 버튼을 삽입하기 위해 -->
+            <div class="color"></div>
+            <div class="color"></div>
+        </div>
+
+        <script>
+            let text = prompt("텍스트값을 입력해 주세요."); // 입력받은 값
+            let kcolors = ["빨강", "파랑", "초록"]; // 보여주기용 한글색
+            let colors = ["red", "blue", "green"]; // id들용 영어색
+
+            if (!text) alert("텍스트값을 입력해 주세요!!!"); // 입력되지 않았을때
+            else {
+                // 입력받았을때
+                document.getElementById("text").innerHTML = `<h1>${text}</h1>`; // h1 삽입
+                let classes = document.getElementsByClassName(`color`); // div의 class들 받아오기
+                for (let i = 0; i < 3; i++) {
+                    // 각 돔 추가
+                    classes[i].innerHTML = `<button id="${colors[i]}" onclick="changeColor(${i})">${kcolors[i]}</button>`;
+                }
+            }
+
+            function changeColor(index) {
+                // 클릭 이벤트시 발생
+                document.getElementById("text").className = colors[index]; // class 변경
+                alert(`${kcolors[index]} 색으로 변경됩니다.`); // 경고메세지 출력
+            }
+        </script>
+    </body>
+</html>
