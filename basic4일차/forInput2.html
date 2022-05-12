@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <!-- onload => body안의 모든 dom 생성후에 수행 함수 지정 -->
+    <body onload="loadMsg()">
+        <style>
+            /* 태그용 */
+            /* 글자 중앙정렬 */
+            h1 {
+                text-align: center;
+                margin: 100px;
+            }
+            /* 각 버튼의 크기등 조절 */
+            button {
+                display: inline-block;
+                width: 30%;
+                height: 50px;
+                margin: 5px;
+            }
+            /* class 용 */
+            /* 버튼 그룹들 중앙정렬 */
+            .container {
+                display: flex;
+                width: 100%;
+                justify-content: center;
+            }
+            /* 색 변경용 class 모음 */
+            .red {
+                color: red;
+            }
+            .blue {
+                color: blue;
+            }
+            .green {
+                color: green;
+            }
+        </style>
+        <h1 id="text"></h1>
+        <!-- 줄맞추기용 -->
+        <div class="container">
+            <button id="red" onclick="changeColor(0)">빨강</button>
+            <button id="blue" onclick="changeColor(1)">파랑</button>
+            <button id="green" onclick="changeColor(2)">초록</button>
+        </div>
+
+        <script>
+            // 바로 수행하는 코드는 body완성 전에 수행 -> 못찾는 경우 생김
+            let kcolors = ["빨강", "파랑", "초록"]; // 보여주기용 한글색
+            let colors = ["red", "blue", "green"]; // id들용 영어색
+
+            function loadMsg() {
+                text = prompt("텍스트값을 입력해 주세요."); // 입력받은 값
+
+                if (!text) alert("텍스트값을 입력해 주세요!!!"); // 입력되지 않았을때
+                else {
+                    // 입력받았을때
+                    document.getElementById("text").textContent = text; // h1 삽입
+                }
+            }
+
+            function changeColor(index) {
+                // 클릭 이벤트시 발생
+                document.getElementById("text").className = colors[index]; // class 변경
+                alert(`${kcolors[index]} 색으로 변경됩니다.`); // 경고메세지 출력
+            }
+        </script>
+    </body>
+</html>
