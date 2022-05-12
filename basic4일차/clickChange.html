@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>clickChange</title>
+    </head>
+    <body>
+        <style>
+            div {
+                display: inline-block;
+                width: 200px;
+                height: 50px;
+                margin: 10px;
+                border: 1px black solid;
+                text-align: center;
+                line-height: 50px;
+            }
+            .box {
+                background-color: grey;
+                color: white;
+            }
+            .clicked {
+                background-color: white;
+                color: black;
+            }
+        </style>
+
+        <div class="box" id="div1" onclick="clickChange('div1')">html</div>
+        <div class="box" id="div2" onclick="clickChange('div2')">css</div>
+        <div class="box" id="div3" onclick="clickChange('div3')">javascript</div>
+
+        <script>
+            let checkId = "";
+
+            function clickChange(id) {
+                if (checkId) document.getElementById(checkId).className = "box";
+                document.getElementById(id).className = "clicked";
+                checkId = id;
+            }
+        </script>
+    </body>
+</html>
