@@ -32,6 +32,8 @@
 
         <div class="small-text" id="target">Hello</div>
 
+        <div id="pic" onclick="changePic()">hello?</div>
+
         <script>
             function getTag() {
                 document.write("<h1>helloWorld</h1>");
@@ -57,6 +59,10 @@
                 // id가 small을 포함할때 참이면 big-text 아니면 small-text
                 if (id.includes("small")) document.getElementById("target").className = "big-text";
                 else document.getElementById("target").className = "small-text";
+            }
+
+            function changePic() {
+                document.getElementById("pic").innerHTML = "<h1>뿅~!!</h1>";
             }
         </script>
     </body>
