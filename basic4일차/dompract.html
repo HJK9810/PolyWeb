@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <style>
+            .big-text {
+                font-size: xx-large;
+            }
+            .small-text {
+                font-size: small;
+            }
+        </style>
+        <script>
+            function getTag() {
+                document.write("<h1>helloWorld</h1>");
+            }
+
+            function getTitle() {
+                let title = document.getElementById("title");
+                console.log(title); // tag 추출
+                console.log(title.textContent); // 내용물 추출
+            }
+
+            function getitems() {
+                let items = document.getElementsByClassName("item");
+
+                let firstItem = items[0]; // ul 첫번째 아이템 가져오기
+                let firstContent = firstItem.textContent; // 해당 태그의 내용 추출
+                firstContent = "바보야"; // 내용변경
+                items[0].textContent = firstContent;
+            }
+
+            function changeTxt() {
+                let id = document.getElementById("target").className;
+                // id가 small을 포함할때 참이면 big-text 아니면 small-text
+                if (id.includes("small")) document.getElementById("target").className = "big-text";
+                else document.getElementById("target").className = "small-text";
+            }
+        </script>
+
+        <button onclick="getTag()">tag 얻기</button>
+        <button onclick="getTitle()">title 얻기</button>
+        <button onclick="getitems()">item 얻기</button>
+        <button onclick="changeTxt()">글자크기 바꾸기</button>
+
+        <h1 id="title">hello World</h1>
+
+        <ul>
+            <li class="item">1</li>
+            <li class="item">2</li>
+            <li class="item">3</li>
+            <li class="item">4</li>
+        </ul>
+
+        <div class="small-text" id="target">Hello</div>
+    </body>
+</html>
