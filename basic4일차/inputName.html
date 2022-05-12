@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            function nameCheck() {
+                // 이름 입력
+                let name = prompt("이름을 입력하세요."); // prompt를 이용해 입력
+                // 입력 체크
+                if (name) alert(`${name}님 안녕하세요.`); // 입력했을대 이름 출력
+                else nameCheck(); // 입력하지 않으면 재귀호출
+            }
+
+            nameCheck(); // 함수호출
+        </script>
+    </body>
+</html>
