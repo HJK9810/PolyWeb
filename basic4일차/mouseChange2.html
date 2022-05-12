@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Onmouse</title>
+    </head>
+    <body>
+        <style>
+            div {
+                display: inline-block;
+                width: 200px;
+                height: 50px;
+                margin: 10px;
+                border: 1px black solid;
+                text-align: center;
+                line-height: 50px;
+            }
+            .box {
+                background-color: grey;
+                color: white;
+            }
+            .clicked {
+                background-color: white;
+                color: black;
+            }
+        </style>
+
+        <div class="box" id="div1" onmouseover="mouseChange('div1', true)" onmouseout="mouseChange('div1', false)">html</div>
+        <div class="box" id="div2" onmouseover="mouseChange('div2', true)" onmouseout="mouseChange('div2', false)">css</div>
+        <div class="box" id="div3" onmouseover="mouseChange('div3', true)" onmouseout="mouseChange('div3', false)">javascript</div>
+
+        <script>
+            function mouseChange(id, check) {
+                // check가 true면 onmouse, flase면 mouse out
+                // 마우스가 올라가면 색이 바뀌고 내려가면 색이 원상복귀
+                if (check) document.getElementById(id).className = "clicked";
+                else document.getElementById(id).className = "box";
+            }
+        </script>
+    </body>
+</html>
