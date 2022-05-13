@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>페이스북 색감 따라하기</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    </head>
+    <body>
+        <style>
+            /* 폰트 설정 */
+            @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+
+            /* tag */
+            div {
+                padding: 10px;
+                font-size: large;
+                font-family: "Noto Sans KR", sans-serif;
+                font-weight: 500;
+            }
+            b {
+                font-weight: 900;
+            }
+            button {
+                display: block;
+                width: 100px;
+                padding: 10px;
+                margin: 10px;
+                background-color: grey;
+            }
+            /* id */
+            #mainBody {
+                width: 260px;
+                height: 600px;
+            }
+            #title {
+                background-color: grey;
+                font-size: medium;
+            }
+            #statement {
+                background-color: rgb(227, 228, 232);
+            }
+            /* class */
+            .channel {
+                margin: 10px;
+                background-color: whitesmoke;
+            }
+        </style>
+
+        <script>
+            $(() => {
+                $("#add").click(function () {
+                    let text = prompt("기사를 등록하세요. => 작성자 : 내용");
+                    let msg = text.trim().split(":"); // 입력받은값 작성자와 내용 구분
+                    $("#statement").append(`<div class="channel"><b>${msg[0]}</b> ${msg[1]}</div>`);
+                    $("#mainBody").css("height", `+=200px`);
+                });
+            });
+        </script>
+
+        <div id="mainBody">
+            <div id="title">기사등록하기</div>
+            <div id="statement">
+                <br />
+                <!-- <div class="channel"><b>박지성</b> SBS에서 월드컵보세요!</div>
+                <div class="channel"><b>안정환</b> MBC죠...</div>
+                <div class="channel"><b>이영표</b> KBS는 수신료의 가치를..</div> -->
+            </div>
+            <button id="add">등록하기</button>
+        </div>
+    </body>
+</html>
