@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    </head>
+    <body>
+        <style>
+            table {
+                border: 1px black solid;
+                border-collapse: collapse;
+                text-align: center;
+            }
+            tr,
+            td {
+                border: 1px black solid;
+                padding: 5px;
+            }
+            .checkbox_table {
+                width: 80px;
+            }
+            .title {
+                width: 200px;
+            }
+            .time {
+                width: 100px;
+            }
+            #log {
+                position: absolute;
+                width: 120px;
+                height: 50px;
+                margin-top: 20px;
+                left: 300px;
+            }
+        </style>
+
+        <script>
+            $(() => {
+                if ($("input:checkbox[name=check_all]").is("checked")) {
+                    $("input:checkbox[name=check]").prop("checked", true);
+                }
+            });
+        </script>
+
+        <form action="">
+            <table>
+                <tr>
+                    <td class="checkbox_table">
+                        <label><input type="checkbox" name="check_all" />확인</label>
+                    </td>
+                    <td class="title">제목</td>
+                    <td class="time">글쓴시각</td>
+                </tr>
+                <tr>
+                    <td class="checkbox_table">
+                        <label><input type="checkbox" name="check" /></label>
+                    </td>
+                    <td class="title">11111</td>
+                    <td class="time">11:11:00</td>
+                </tr>
+                <tr>
+                    <td class="checkbox_table">
+                        <label><input type="checkbox" name="check" /></label>
+                    </td>
+                    <td class="title">2222222222</td>
+                    <td class="time">11:11:00</td>
+                </tr>
+                <tr>
+                    <td class="checkbox_table">
+                        <label><input type="checkbox" name="check" /></label>
+                    </td>
+                    <td class="title">랴돔;ㅐ햐;ㄷ랴</td>
+                    <td class="time">11:11:00</td>
+                </tr>
+                <tr>
+                    <td class="checkbox_table">
+                        <label><input type="checkbox" name="check" /></label>
+                    </td>
+                    <td class="title">먇러ㅐㅑㄷ좋3333</td>
+                    <td class="time">11:11:00</td>
+                </tr>
+                <tr>
+                    <td class="checkbox_table">
+                        <label><input type="checkbox" name="check" /></label>
+                    </td>
+                    <td class="title">댜ㅓㄹ4444댜ㅓ랻</td>
+                    <td class="time">11:11:00</td>
+                </tr>
+                <tr>
+                    <td class="checkbox_table">
+                        <label><input type="checkbox" name="check" /></label>
+                    </td>
+                    <td class="title">ㅁㄴ55555ㄴㅇ</td>
+                    <td class="time">11:11:00</td>
+                </tr>
+            </table>
+            <button id="log">로그</button>
+        </form>
+    </body>
+</html>
