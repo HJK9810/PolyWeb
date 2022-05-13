@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    </head>
+    <body>
+        <script>
+            $(() => {
+                $("#all_checked").click(() => {
+                    $("input[name=mycheck]:checkbox").prop("checked", true);
+                });
+
+                $("#check_num_btn").click(() => {
+                    if ($("input:checkbox[name=mycheck]").is(":checked") == true) {
+                        $("#result").text("OK");
+                    } else {
+                        $("#result").text("No");
+                    }
+                });
+            });
+        </script>
+
+        <form action="">
+            <input type="checkbox" name="mycheck" id="" />
+            <input type="checkbox" name="mycheck" id="" />
+            <input type="checkbox" name="mycheck" id="" />
+            <input type="checkbox" name="mycheck" id="" />
+            <input type="checkbox" name="mycheck" id="" />
+            <input type="checkbox" name="mycheck" id="" />
+            <input type="button" id="all_checked" value="전체 체크" />
+            <input type="button" id="check_num_btn" value="체크 확인" />
+            <span id="result"></span>
+        </form>
+    </body>
+</html>
