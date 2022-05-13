@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>jquery</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    </head>
+    <body>
+        <script>
+            // arrow function 사용
+            $(() => {
+                console.log("onload후에 동작!!");
+
+                $("#button1").click(() => {
+                    console.log("click");
+                });
+
+                // 기존 js click 이벤트
+                document.getElementById("button2").addEventListener("click", function () {
+                    console.log("버튼2!!");
+                });
+
+                // 기존 방식과 비슷한 방식
+                $("#button3").on("click", () => {
+                    console.log("click3");
+                });
+
+                $("#button4")
+                    .click(() => {
+                        console.log("click");
+                    })
+                    .mouseover(() => console.log("마우스 오버"))
+                    .mouseout(() => console.log("마우스 아웃"));
+
+                $("#button5").click(() => {
+                    $("#text").html("<b>html</b>");
+                    // $("#text").text("<b>html</b>");
+                    //  append : 셀렉터 뒤, prepend : 셀렉터 앞
+                    $("#text").append("append연습").prepend("prepend연습").attr("class", "hello");
+                });
+            });
+        </script>
+
+        <div id="title">title</div>
+        <div class="big-text">bit text</div>
+        <div class="big-text">bit text2</div>
+        <button id="button1">click1!!</button>
+        <button id="button2">click2!!</button>
+        <button id="button3">click3!!</button>
+        <button id="button4">click4!!</button>
+
+        <p id="text"></p>
+        <button id="button5">click5!!</button>
+    </body>
+</html>
