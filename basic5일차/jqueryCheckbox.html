@@ -21,9 +21,36 @@
                         $("#result").text("No");
                     }
                 });
+
+                $("#box").click(() => {
+                    // 1초에 한번
+                    setTimeout(() => {
+                        $("#box")
+                            .animate({
+                                left: "+=100px",
+                            })
+                            .animate({
+                                top: "+=100px",
+                            });
+                    }, 1000);
+                });
+
+                // 1초마다
+                setInterval(() => {
+                    console.log("1초~");
+                }, 1000);
             });
         </script>
 
+        <style>
+            #box {
+                position: absolute; /* 위치 변화를 위해 */
+                border: 1px black solid;
+                background-color: plum;
+                width: 100px;
+                height: 100px;
+            }
+        </style>
         <form action="">
             <input type="checkbox" name="mycheck" id="" />
             <input type="checkbox" name="mycheck" id="" />
@@ -35,5 +62,6 @@
             <input type="button" id="check_num_btn" value="체크 확인" />
             <span id="result"></span>
         </form>
+        <div id="box"></div>
     </body>
 </html>
