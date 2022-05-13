@@ -27,17 +27,17 @@
             }
         </style>
 
-        <div class="box" id="div1" onmouseover="mouseChange('div1')">html</div>
-        <div class="box" id="div2" onmouseover="mouseChange('div2')">css</div>
-        <div class="box" id="div3" onmouseover="mouseChange('div3')">javascript</div>
+        <div class="box" id="div1" onmouseover="mouseChange(this)">html</div>
+        <div class="box" id="div2" onmouseover="mouseChange(this)">css</div>
+        <div class="box" id="div3" onmouseover="mouseChange(this)">javascript</div>
 
         <script>
             let checkId = "";
 
-            function mouseChange(id) {
+            function mouseChange(dom) {
                 if (checkId) document.getElementById(checkId).className = "box";
-                document.getElementById(id).className = "clicked";
-                checkId = id;
+                document.getElementById(dom.id).className = "clicked";
+                checkId = dom.id;
             }
         </script>
     </body>
