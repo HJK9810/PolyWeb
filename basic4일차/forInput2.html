@@ -50,9 +50,6 @@
 
         <script>
             // 바로 수행하는 코드는 body완성 전에 수행 -> 못찾는 경우 생김
-            let kcolors = ["빨강", "파랑", "초록"]; // 보여주기용 한글색
-            let colors = ["red", "blue", "green"]; // id들용 영어색
-
             function loadMsg() {
                 text = prompt("텍스트값을 입력해 주세요."); // 입력받은 값
 
@@ -64,6 +61,8 @@
             }
 
             function changeColor(index) {
+                let kcolors = ["빨강", "파랑", "초록"]; // 보여주기용 한글색
+                let colors = ["red", "blue", "green"]; // id들용 영어색
                 // 클릭 이벤트시 발생
                 document.getElementById("text").className = colors[index]; // class 변경
                 alert(`${kcolors[index]} 색으로 변경됩니다.`); // 경고메세지 출력
