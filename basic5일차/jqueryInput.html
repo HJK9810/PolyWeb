@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    </head>
+    <!-- onload => body안의 모든 dom 생성후에 수행 함수 지정 -->
+    <body>
+        <style>
+            /* 태그용 */
+            /* 글자 중앙정렬 */
+            h1 {
+                text-align: center;
+                margin: 100px;
+            }
+            /* 각 버튼의 크기등 조절 */
+            button {
+                display: inline-block;
+                width: 30%;
+                height: 50px;
+                margin: 5px;
+            }
+            /* class 용 */
+            /* 버튼 그룹들 중앙정렬 */
+            .container {
+                display: flex;
+                width: 100%;
+                justify-content: center;
+            }
+            /* 색 변경용 class 모음 */
+            .red {
+                color: red;
+            }
+            .blue {
+                color: blue;
+            }
+            .green {
+                color: green;
+            }
+        </style>
+
+        <script>
+            // 바로 수행하는 코드는 body완성 전에 수행 -> 못찾는 경우 생김
+            $(() => {
+                // onload 부분
+                text = prompt("텍스트값을 입력해 주세요."); // 입력받은 값
+
+                if (!text) alert("텍스트값을 입력해 주세요!!!"); // 입력되지 않았을때
+                else {
+                    // 입력받았을때
+                    $("#text").append(text); // h1 삽입
+                }
+
+                $("#red").click(() => {
+                    $("#text").attr("class", "red"); // class 변경
+                    alert(`빨강 색으로 변경됩니다.`); // 경고메세지 출력
+                });
+                $("#blue").click(() => {
+                    $("#text").attr("class", "red"); // class 변경
+                    alert(`파랑 색으로 변경됩니다.`); // 경고메세지 출력
+                });
+                $("#green").click(() => {
+                    $("#text").attr("class", "red"); // class 변경
+                    alert(`초록 색으로 변경됩니다.`); // 경고메세지 출력
+                });
+            });
+        </script>
+
+        <h1 id="text"></h1>
+        <!-- 줄맞추기용 -->
+        <div class="container">
+            <button id="red">빨강</button>
+            <button id="blue">파랑</button>
+            <button id="green">초록</button>
+        </div>
+    </body>
+</html>
