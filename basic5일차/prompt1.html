@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    </head>
+    <body>
+        <style>
+            input {
+                display: inline-block;
+                border: 1px black solid;
+            }
+            input[type="text"] {
+                width: 200px;
+                height: 20px;
+            }
+            input[type="password"] {
+                width: 200px;
+                height: 20px;
+            }
+            input[type="reset"] {
+                background-color: #d3d3d3;
+                width: 100px;
+                height: 30px;
+            }
+            input[type="submit"] {
+                background-color: #d3d3d3;
+                width: 100px;
+                height: 30px;
+            }
+
+            select {
+                width: 200px;
+                height: 20px;
+            }
+            td {
+                width: 80px;
+            }
+
+            /* class */
+            .input {
+                width: 250px;
+                padding: 5px;
+            }
+        </style>
+
+        <script>
+            $(() => {
+                $("input:submit").click(() => {
+                    let check = false;
+
+                    if (checkEamil($("input:text").val()) && $("input:password").val().length >= 5) {
+                        if ($("input:radio").is(":checked")) {
+                            if ($("select[name=jobs]").val()) {
+                                if ($("input:checkbox[name=hobby]:checked").length >= 3) {
+                                    check = true;
+                                }
+                            }
+                        }
+                    }
+
+                    if (check) alert("회원가입이 완료되었습니다.");
+                    else alert("조건이 맞지 않습니다.");
+                });
+            });
+
+            function checkEamil(email) {
+                let regx = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                return regx.test(email);
+            }
+        </script>
+
+        <form action="">
+            <table>
+                <tr>
+                    <td class="index">아이디</td>
+                    <td class="input"><input type="text" /></td>
+                </tr>
+                <tr>
+                    <td class="index">비밀번호</td>
+                    <td class="input"><input type="password" /></td>
+                </tr>
+                <tr>
+                    <td class="index">성별</td>
+                    <td class="input">
+                        <label><input type="radio" name="gender" />남자</label>
+                        <label><input type="radio" name="gender" />여자</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="index">직업</td>
+                    <td class="input">
+                        <select name="jobs">
+                            <option class="job"></option>
+                            <option class="job">회사원</option>
+                            <option class="job">주부</option>
+                            <option class="job">자영업</option>
+                            <option class="job">무직</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="index">취미</td>
+                    <td class="input">
+                        <label><input type="checkbox" name="hobby" /> 개발</label>
+                        <label><input type="checkbox" name="hobby" /> 개임</label>
+                        <label><input type="checkbox" name="hobby" /> 낚시</label>
+                        <br />
+                        <label><input type="checkbox" name="hobby" /> 운동</label>
+                        <label><input type="checkbox" name="hobby" /> 독서</label>
+                        <label><input type="checkbox" name="hobby" /> 음악감상</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="reset" value="취소" />
+                        <input type="submit" value="회원가입" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
