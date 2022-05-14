@@ -39,9 +39,25 @@
 
         <script>
             $(() => {
-                if ($("input:checkbox[name=check_all]").is("checked")) {
-                    $("input:checkbox[name=check]").prop("checked", true);
-                }
+                $("input:checkbox[name=check_all]").change(function () {
+                    if (this.checked) $("input:checkbox[name=check]").prop("checked", true);
+                    else $("input:checkbox[name=check]").prop("checked", false);
+                });
+
+                $("input:checkbox[name=check]").change(function () {
+                    if (!$("input:checkbox[name=mycheck]").is(":checked")) {
+                        $("input:checkbox[name=check_all]").prop("checked", false);
+                    }
+                });
+
+                $("#log").click(() => {
+                    $("input:checkbox[name=check]").each(function () {
+                        if (this.checked) {
+                            let idx = $("input:checkbox[name=check]").index(this);
+                            console.log(`${$(".title")[idx].textContent}\n`);
+                        }
+                    });
+                });
             });
         </script>
 
@@ -97,7 +113,8 @@
                     <td class="time">11:11:00</td>
                 </tr>
             </table>
-            <button id="log">로그</button>
+            <!-- <input type="button" value="로그" id="log" /> -->
         </form>
+        <button id="log">로그</button>
     </body>
 </html>
