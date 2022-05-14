@@ -7,5 +7,42 @@
         <title>Document</title>
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     </head>
-    <body></body>
+    <body>
+        <style>
+            div {
+                display: flex;
+                width: 800px;
+                height: 700px;
+                border: 1px black solid;
+                justify-content: center;
+                align-items: center;
+            }
+            img {
+                position: absolute;
+                width: 100px;
+                height: 100px;
+            }
+        </style>
+        <script>
+            $(document).keydown((event) => {
+                // key번호 => 왼쪽:37, 위:38, 오른쪽:39, 아래:40
+                if (key == 37) {
+                    //왼쪽
+                    $("img").animate({ left: `-=100px` });
+                } else if (key == 38) {
+                    //위
+                    $("img").animate({ top: `-=100px` });
+                } else if (key == 39) {
+                    //오른쪽
+                    $("img").animate({ left: `+=100px` });
+                } else if (key == 40) {
+                    //아래
+                    $("img").animate({ top: `+=100px` });
+                }
+            });
+        </script>
+        <div>
+            <img src="https://img6.yna.co.kr/photo/yna/YH/2010/02/01/PYH2010020102450000400_P4.jpg" alt="뿌까" />
+        </div>
+    </body>
 </html>
