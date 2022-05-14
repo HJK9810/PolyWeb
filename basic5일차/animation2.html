@@ -19,18 +19,50 @@
                 position: absolute;
                 width: 50px;
                 height: 100px;
-                left: 20px;
+                left: 50px;
                 bottom: 5px;
             }
             #obstacle {
                 position: absolute;
                 width: 150px;
                 height: 100px;
+                right: 5px;
                 bottom: 5px;
             }
         </style>
         <script>
-            setInterval();
+            $(() => {
+                $(document).keydown((event) => {
+                    // key번호 => spacebar : 32
+                    if (event.keyCode == 32) {
+                        // up!
+                        $("#characters").animate({ top: "-=200px" });
+                        setTimeout(() => {
+                            // 원상복귀
+                            $("#characters").animate({ top: "+=200px" });
+                        }, 500);
+                    }
+                });
+                // 5초마다 생성
+                setInterval(() => {
+                    // 본래 자리에서 끝까지 이동 - 최초의 위치 : left 645px , 이미지 길이 : 150px
+                    // img 보여주기
+                    $("#obstacle").show();
+                    setTimeout(() => {
+                        // 끝까지 이동
+                        $("#obstacle").animate({ left: `-=800px` });
+
+                        // img가 나타날 위치 무작위 생성
+                        let bomStart = Math.ceil(Math.random() * 245) + 400;
+                        // 이동을 위한 잠시간의 시간벌이
+                        setTimeout(() => {
+                            // 이동은 animate를 이용함으로 도로 나타날 위치까지 이동할때는 모습 숨기기
+                            $("#obstacle").hide();
+                            $("#obstacle").animate({ left: `${bomStart}px` });
+                        }, 500);
+                    }, 500);
+                }, 5000);
+            });
         </script>
         <div>
             <img src="https://supermariorun.com/assets/img/stage/mario03.png" alt="캐릭터" id="characters" />
