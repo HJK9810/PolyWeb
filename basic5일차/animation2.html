@@ -7,5 +7,34 @@
         <title>Document</title>
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     </head>
-    <body></body>
+    <body>
+        <style>
+            div {
+                position: relative;
+                width: 800px;
+                height: 600px;
+                border: 1px black solid;
+            }
+            #characters {
+                position: absolute;
+                width: 50px;
+                height: 100px;
+                left: 20px;
+                bottom: 5px;
+            }
+            #obstacle {
+                position: absolute;
+                width: 150px;
+                height: 100px;
+                bottom: 5px;
+            }
+        </style>
+        <script>
+            setInterval();
+        </script>
+        <div>
+            <img src="https://supermariorun.com/assets/img/stage/mario03.png" alt="캐릭터" id="characters" />
+            <img src="http://www.mariowiki.com/images/thumb/e/e6/BulletBillWii.png/800px-BulletBillWii.png" alt="장애물" id="obstacle" />
+        </div>
+    </body>
 </html>
