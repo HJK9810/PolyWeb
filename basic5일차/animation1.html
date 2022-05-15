@@ -26,16 +26,16 @@
         <script>
             $(document).keydown((event) => {
                 // key번호 => 왼쪽:37, 위:38, 오른쪽:39, 아래:40
-                if (key == 37) {
+                if (event.keyCode == 37) {
                     //왼쪽
                     $("img").animate({ left: `-=100px` });
-                } else if (key == 38) {
+                } else if (event.keyCode == 38) {
                     //위
                     $("img").animate({ top: `-=100px` });
-                } else if (key == 39) {
+                } else if (event.keyCode == 39) {
                     //오른쪽
                     $("img").animate({ left: `+=100px` });
-                } else if (key == 40) {
+                } else if (event.keyCode == 40) {
                     //아래
                     $("img").animate({ top: `+=100px` });
                 }
