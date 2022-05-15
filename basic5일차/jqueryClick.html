@@ -34,17 +34,9 @@
 
         <script>
             $(() => {
-                $("#div1").click(() => {
+                $("div").click(function () {
                     $("div").attr("class", "box");
-                    $("#div1").attr("class", "clicked");
-                });
-                $("#div2").click(() => {
-                    $("div").attr("class", "box");
-                    $("#div2").attr("class", "clicked");
-                });
-                $("#div3").click(() => {
-                    $("div").attr("class", "box");
-                    $("#div3").attr("class", "clicked");
+                    $(this).attr("class", "clicked");
                 });
             });
         </script>
