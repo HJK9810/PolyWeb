@@ -35,8 +35,8 @@
         <script>
             $(() => {
                 $("div").click(function () {
-                    $("div").attr("class", "box");
-                    $(this).attr("class", "clicked");
+                    $("div").removeClass("clicked");
+                    $(this).addClass("clicked");
                 });
             });
         </script>
