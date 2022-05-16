@@ -159,18 +159,14 @@ $("#resetbtn").click(function () {
 $("#pause").click(function () {
     gamePause();
 });
-// gamestart 클릭시 게임 시작
-start.click(function () {
-    gameStart();
-});
 
 $(() => {
     // gameover용 img 우선 숨기기
     end.hide();
-    // 공격용 미사일도 우선 숨기기
-    attack.hide();
-    $("#bomb").hide();
     // pause창도 숨기기
-    $("#forPause").hide();
     $("#pause").hide();
+    // gamestart 클릭시 게임 시작
+    start.click(function () {
+        gameStart();
+    });
 });

@@ -49,6 +49,8 @@ h2 {
 }
 #forPause {
     position: absolute;
+    /* 처음에는 우선 숨겨놓기 */
+    display: none;
     top: 200px;
     left: 250px;
     padding: 30px 20px 20px 20px;
@@ -97,6 +99,8 @@ h2 {
 /* gmae - 공격용 미사일 */
 #attack {
     position: absolute;
+    /* 처음에는 우선 숨겨놓기 */
+    display: none;
     width: 50px;
     left: 110px;
     bottom: 25px;
@@ -104,5 +108,7 @@ h2 {
 /* 폭파시 */
 #bomb {
     position: absolute;
+    /* 처음에는 우선 숨겨놓기 */
+    display: none;
     width: 50px;
 }
