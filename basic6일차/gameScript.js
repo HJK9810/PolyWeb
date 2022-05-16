@@ -5,6 +5,8 @@ let submarine = $("#characters");
 let shark = $("#obstacle");
 
 let isJumping = false;
+let isGameing = true;
+let timeloop;
 
 function jump() {
     if (isJumping) {
@@ -19,10 +21,9 @@ function jump() {
 
 function moveShark() {
     // img가 나타날 위치 무작위 생성
-    // let bomStart = Math.ceil(Math.random() * 245) + 400;
+    let bomStart = Math.ceil(Math.random() * 200) - 100;
     shark.animate({ right: "120%" }, 3000, function () {
-        shark.css({ right: "-100px" });
-        // shark.css({ left: `${bomStart}px` });
+        shark.css({ right: `${bomStart}px` });
     });
 }
 
@@ -38,20 +39,24 @@ function submarineDead() {
 }
 
 function gameOver() {
-    shark.stop();
+    shark.stop(true, true);
+    clearInterval(timeloop);
+    shark.hide();
     // gameover 화면 출력
     $("#gameover").show();
 }
 
 function gameStart() {
     $("#gameover").hide();
+    shark.show();
 
     gameRoad();
+    // gameOver();
 }
 
 function gameRoad() {
     // game화면 그리기
-    setInterval(function () {
+    timeloop = setInterval(function () {
         // 1초에 30번 그리기
         moveShark();
         // 죽었는지 체크
@@ -60,21 +65,10 @@ function gameRoad() {
 }
 
 $("body").keydown(function (event) {
-    // 잠수함
-    let left = submarine.offset().left;
-    let top = submarine.offset().top;
-    let right = left + 100;
-    let bottom = top + 100;
-    let move = 25; // 이동할 픽셀
-
-    switch (event.key) {
-        case " ":
-            jump();
-            break;
-    }
+    if (event.key == " ") jump();
 });
 
-$("#gameover").click(function () {
+$("button").click(function () {
     gameStart();
 });
 
