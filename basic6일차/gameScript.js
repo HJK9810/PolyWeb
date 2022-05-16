@@ -66,7 +66,7 @@ function sharkDead() {
     const sharkLeft = shark.offset().left;
     const attackRight = attack.offset().left + 50;
 
-    if (sharkLeft <= attackRight) {
+    if (sharkLeft < attackRight) {
         shark.hide(); // 공격맞은 상어 소멸
         attack.hide(); // 성공한 미사일도 소멸
         checkScore(true);
@@ -119,12 +119,13 @@ function gameLoad() {
 }
 
 function gamePause() {
+    // 게임 정지
+    clearInterval(timeloop);
+    shark.stop(true, true);
     // pause창 보이기
     $("#forPause").show();
 
     $("#continue").click(() => {
-        // 게임 정지
-        clearInterval(timeloop);
         // pause창 다시 숨기기
         $("#forPause").hide();
         // game 이어서
@@ -149,9 +150,9 @@ $(() => {
     $("#pause").hide();
     //  spacebar입력시 user캐릭터 jump
     $("body").keydown(function (event) {
-        console.log(event.key);
+        // console.log(event.key);
         if (event.key == " ") jump();
-        else if (event.key == "Control") shootAttack();
+        else if (event.key == "Enter") shootAttack();
     });
     // restart버튼 입력시 재시작
     $("#resetbtn").click(function () {
