@@ -34,7 +34,7 @@
             $(() => {
                 $(document).keydown((event) => {
                     // key번호 => spacebar : 32 / key => spacebar : ''
-                    if (event.key) {
+                    if (event.key == " ") {
                         // up!
                         $("#characters").animate({ top: "-=200px" });
                         setTimeout(() => {
