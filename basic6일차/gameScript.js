@@ -14,7 +14,7 @@ function jump() {
     if (isJumping) return;
 
     isJumping = true;
-    submarine.animate({ bottom: "+=150px" }, 500).animate({ bottom: "-=150px" }, 500, () => {
+    submarine.animate({ bottom: "+=200px" }, 500).animate({ bottom: "-=200px" }, 1000, () => {
         isJumping = false;
     });
 }
@@ -50,13 +50,13 @@ function submarineDead() {
      */
 
     const sharkLeft = shark.offset().left;
-    const submarineRight = submarine.offset().left + 50;
+    const submarineRight = submarine.offset().left + 100;
 
     const sharktop = shark.offset().top;
-    const submarineBottom = submarine.offset().top + 100;
+    const submarineBottom = submarine.offset().top + 50;
 
-    const sharkRight = sharkLeft + 150;
-    const submarineLeft = submarineRight - 50;
+    const sharkRight = sharkLeft + 100;
+    const submarineLeft = submarineRight - 100;
 
     if (!isJumping && sharkLeft < submarineRight && sharktop < submarineBottom && !(sharkRight < submarineLeft)) gameOver();
 }
@@ -91,15 +91,19 @@ function gameOver() {
 function gameReStart() {
     end.hide();
     shark.show();
-    start.show();
+    $("#pause").show();
 
     score = 0;
     $("#score").text("score : " + score);
+
+    gameLoad();
 }
 
 function gameStart() {
     end.hide();
     shark.show();
+    start.hide();
+    $("#pause").show();
 
     gameLoad();
 }
@@ -126,6 +130,7 @@ function gamePause() {
         // game 이어서
         gameLoad();
     });
+
     $("#reset").click(() => {
         // pause창 숨기기
         $("#forPause").hide();
@@ -158,8 +163,6 @@ $(() => {
     });
     // gamestart 클릭시 게임 시작
     start.click(function () {
-        start.hide();
-        $("#pause").show();
         gameStart();
     });
 });
