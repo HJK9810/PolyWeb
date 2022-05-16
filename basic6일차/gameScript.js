@@ -5,7 +5,6 @@ let submarine = $("#characters");
 let shark = $("#obstacle");
 
 let isJumping = false;
-let isGameing = true;
 let timeloop;
 
 function jump() {
@@ -22,7 +21,9 @@ function jump() {
 function moveShark() {
     // img가 나타날 위치 무작위 생성
     let bomStart = Math.ceil(Math.random() * 200) - 100;
-    shark.animate({ right: "120%" }, 5000, function () {
+    // 속도 랜덤 카운트 - 2000~4000까지
+    let shartSpeed = Math.ceil((Math.random() * 2 + 2) * 1000);
+    shark.animate({ right: "120%" }, shartSpeed, function () {
         shark.css({ right: `${bomStart}px` });
     });
 }
@@ -71,16 +72,17 @@ function gameRoad() {
 }
 
 $(() => {
+    // gameover용 img 우선 숨기기
     $("#gameover").hide();
-
+    //  spacebar입력시 user캐릭터 jump
     $("body").keydown(function (event) {
         if (event.key == " ") jump();
     });
-
+    // restart버튼 입력시 재시작
     $("button").click(function () {
         gameReStart();
     });
-
+    // gamestart 클릭시 게임 시작
     $("#gamestart").click(function () {
         $("#gamestart").hide();
         gameStart();
