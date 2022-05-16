@@ -1,8 +1,10 @@
 const submarine = $("#characters");
 const shark = $("#obstacle");
+const attack = $("#attack");
 const end = $("#gameover");
 const start = $("#gamestart");
 
+// 상태용
 let isJumping = false;
 let timeloop;
 
@@ -24,8 +26,18 @@ function moveShark() {
     let shartSpeed = Math.ceil((Math.random() * 2 + 2) * 1000);
     shark.animate({ right: "120%" }, shartSpeed, function () {
         shark.css({ right: `${bomStart}px` });
-        checkScore();
+        checkScore(false);
     });
+}
+
+// 미사일 공격
+function shootAttack() {
+    attack.show();
+    attack.animate({ left: "120%" }, 2000, function () {
+        attack.css({ left: `109px` });
+        attack.hide();
+    });
+    sharkDead();
 }
 
 // gameover check
@@ -49,8 +61,22 @@ function submarineDead() {
     if (!isJumping && sharkLeft < submarineRight && sharktop < submarineBottom && !(sharkRight < submarineLeft)) gameOver();
 }
 
-function checkScore() {
-    score += 100; // 장애물 피할때 +100점
+// 미사일 hit check
+function sharkDead() {
+    const sharkLeft = shark.offset().left;
+    const attackRight = attack.offset().left + 50;
+
+    if (sharkLeft <= attackRight) {
+        shark.hide(); // 공격맞은 상어 소멸
+        attack.hide(); // 성공한 미사일도 소멸
+        checkScore(true);
+    }
+}
+
+function checkScore(shoot) {
+    if (shoot) score += 200; // 장애물 공격성공일때 +200점
+    else score += 100; // 장애물 피할때 +100점
+
     $("#score").text("score : " + score);
 }
 
@@ -66,6 +92,9 @@ function gameReStart() {
     end.hide();
     shark.show();
     start.show();
+
+    score = 0;
+    $("#score").text("score : " + score);
 }
 
 function gameStart() {
@@ -73,7 +102,6 @@ function gameStart() {
     shark.show();
 
     gameLoad();
-    // gameOver();
 }
 
 function gameLoad() {
@@ -83,17 +111,19 @@ function gameLoad() {
         moveShark();
         // 죽었는지 체크
         submarineDead();
-        // 점수 체크
-        // checkScore();
     }, 1000 / 30);
 }
 
 $(() => {
     // gameover용 img 우선 숨기기
     end.hide();
+    // 공격용 미사일도 우선 숨기기
+    attack.hide();
     //  spacebar입력시 user캐릭터 jump
     $("body").keydown(function (event) {
+        console.log(event.key);
         if (event.key == " ") jump();
+        else if (event.key == "Control") shootAttack();
     });
     // restart버튼 입력시 재시작
     $("#resetbtn").click(function () {

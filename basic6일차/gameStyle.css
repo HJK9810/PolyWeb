@@ -69,3 +69,10 @@ h2 {
     right: 5px;
     bottom: 5px;
 }
+/* gmae - 공격용 미사일 */
+#attack {
+    position: absolute;
+    width: 50px;
+    left: 110px;
+    bottom: 10px;
+}
