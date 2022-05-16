@@ -67,6 +67,11 @@ function sharkDead() {
     const attackRight = attack.offset().left + 50;
 
     if (sharkLeft < attackRight) {
+        $("#bomb")
+            .css({ left: `${shark.offset().left}px` })
+            .css({ top: `${shark.offset().top}px` })
+            .fadeIn(50)
+            .fadeOut(50);
         shark.hide(); // 공격맞은 상어 소멸
         attack.hide(); // 성공한 미사일도 소멸
         checkScore(true);
@@ -139,31 +144,33 @@ function gamePause() {
         gameOver();
     });
 }
+//  spacebar입력시 user캐릭터 jump
+$("body").keydown(function (event) {
+    // console.log(event.key);
+    if (event.key == " ") jump();
+    else if (event.key == "Enter") shootAttack();
+});
+
+// restart버튼 입력시 재시작
+$("#resetbtn").click(function () {
+    gameReStart();
+});
+// pause버튼 입력시 all stop
+$("#pause").click(function () {
+    gamePause();
+});
+// gamestart 클릭시 게임 시작
+start.click(function () {
+    gameStart();
+});
 
 $(() => {
     // gameover용 img 우선 숨기기
     end.hide();
     // 공격용 미사일도 우선 숨기기
     attack.hide();
+    $("#bomb").hide();
     // pause창도 숨기기
     $("#forPause").hide();
     $("#pause").hide();
-    //  spacebar입력시 user캐릭터 jump
-    $("body").keydown(function (event) {
-        // console.log(event.key);
-        if (event.key == " ") jump();
-        else if (event.key == "Enter") shootAttack();
-    });
-    // restart버튼 입력시 재시작
-    $("#resetbtn").click(function () {
-        gameReStart();
-    });
-    // pause버튼 입력시 all stop
-    $("#pause").click(function () {
-        gamePause();
-    });
-    // gamestart 클릭시 게임 시작
-    start.click(function () {
-        gameStart();
-    });
 });

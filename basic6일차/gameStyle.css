@@ -101,3 +101,8 @@ h2 {
     left: 110px;
     bottom: 25px;
 }
+/* 폭파시 */
+#bomb {
+    position: absolute;
+    width: 50px;
+}
