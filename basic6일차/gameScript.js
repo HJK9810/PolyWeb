@@ -114,6 +114,26 @@ function gameLoad() {
     }, 1000 / 30);
 }
 
+function gamePause() {
+    // pause창 보이기
+    $("#forPause").show();
+
+    $("#continue").click(() => {
+        // 게임 정지
+        clearInterval(timeloop);
+        // pause창 다시 숨기기
+        $("#forPause").hide();
+        // game 이어서
+        gameLoad();
+    });
+    $("#reset").click(() => {
+        // pause창 숨기기
+        $("#forPause").hide();
+        // game종료
+        gameOver();
+    });
+}
+
 $(() => {
     // gameover용 img 우선 숨기기
     end.hide();
@@ -121,6 +141,7 @@ $(() => {
     attack.hide();
     // pause창도 숨기기
     $("#forPause").hide();
+    $("#pause").hide();
     //  spacebar입력시 user캐릭터 jump
     $("body").keydown(function (event) {
         console.log(event.key);
@@ -133,11 +154,12 @@ $(() => {
     });
     // pause버튼 입력시 all stop
     $("#pause").click(function () {
-        $("#forPause").show();
+        gamePause();
     });
     // gamestart 클릭시 게임 시작
     start.click(function () {
         start.hide();
+        $("#pause").show();
         gameStart();
     });
 });
