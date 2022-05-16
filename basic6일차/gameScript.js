@@ -7,12 +7,10 @@ let isJumping = false;
 let timeloop;
 
 function jump() {
-    if (isJumping) {
-        return;
-    }
+    if (isJumping) return;
 
     isJumping = true;
-    submarine.animate({ bottom: "+=150px" }, 500).animate({ bottom: "-=150px" }, 500, function () {
+    submarine.animate({ bottom: "+=150px" }, 500).animate({ bottom: "-=150px" }, 500, () => {
         isJumping = false;
     });
 }
@@ -29,13 +27,23 @@ function moveShark() {
 
 // gameover check
 function submarineDead() {
-    let sharkLeft = shark.offset().left;
-    let submarineRight = submarine.offset().left + 50;
+    /**
+     * gameover 이유
+     * 1. 잠수함 우측 위치와 상어 좌측 위치가 일치 혹은 상어쪽이 더 작을 경우
+     * 2. 잠수함 바닥 위치와 상어 위쪽 위치 비교시 잠수함쪽이 더 커질경우
+     * 3. 잠수함 좌측 위치와 상어 우측 위치가 일치 혹은 상어쪽이 더 클 경우
+     */
 
-    let sharksize = shark.offset().top;
-    let submarineBottom = submarine.offset().top + 100;
+    const sharkLeft = shark.offset().left;
+    const submarineRight = submarine.offset().left + 50;
 
-    if (!isJumping && submarineRight > sharkLeft && sharksize < submarineBottom && !(sharkLeft + 150 < submarineRight - 50)) gameOver();
+    const sharktop = shark.offset().top;
+    const submarineBottom = submarine.offset().top + 100;
+
+    const sharkRight = sharkLeft + 150;
+    const submarineLeft = submarineRight - 50;
+
+    if (!isJumping && sharkLeft < submarineRight && sharktop < submarineBottom && !(sharkRight < submarineLeft)) gameOver();
 }
 
 function gameOver() {
