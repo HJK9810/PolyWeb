@@ -56,11 +56,11 @@ function gameStart() {
     end.hide();
     shark.show();
 
-    gameRoad();
+    gameLoad();
     // gameOver();
 }
 
-function gameRoad() {
+function gameLoad() {
     // game화면 그리기
     timeloop = setInterval(function () {
         // 1초에 30번 그리기
