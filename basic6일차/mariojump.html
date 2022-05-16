@@ -17,10 +17,19 @@
                 height: 500px;
                 border: 1px black solid;
             }
-            #gameover {
+            #gameover img {
                 display: block;
                 margin: 0px auto;
             }
+            #gameover button {
+                display: block;
+                margin: 20px auto;
+                background: none;
+                height: 50px;
+                border: 3px whitesmoke solid;
+                color: whitesmoke;
+            }
+
             #characters {
                 position: absolute;
                 width: 50px;
@@ -38,89 +47,15 @@
         </style>
 
         <div>
-            <img src="../imgs/gameover.gif" alt="gameover" id="gameover" />
+            <div id="gameover">
+                <img src="../imgs/gameover.gif" alt="gameover" />
+                <button>Do you want to replay?</button>
+            </div>
+
             <img src="../imgs/submarine.gif" alt="캐릭터" id="characters" />
             <img src="../imgs/shark.gif" alt="장애물" id="obstacle" />
         </div>
 
-        <script>
-            const WIDTH = 800;
-            const HEIGHT = 500;
-
-            let submarine = $("#characters");
-            let shark = $("#obstacle");
-
-            let isJumping = false;
-
-            function jump() {
-                if (isJumping) {
-                    return;
-                }
-
-                isJumping = true;
-                submarine.animate({ bottom: "+=150px" }, 500).animate({ bottom: "-=150px" }, 500, function () {
-                    isJumping = false;
-                });
-            }
-
-            function moveShark() {
-                // img가 나타날 위치 무작위 생성
-                // let bomStart = Math.ceil(Math.random() * 245) + 400;
-                shark.animate({ right: "120%" }, 3000, function () {
-                    shark.css({ right: "-100px" });
-                    // shark.css({ left: `${bomStart}px` });
-                });
-            }
-
-            // gameover check
-            function submarineDead() {
-                let sharkLeft = shark.offset().left;
-                let submarineRight = submarine.offset().left + 50;
-
-                let sharksize = shark.offset().top;
-                let submarineBottom = submarine.offset().top + 100;
-
-                if (!isJumping && submarineRight > sharkLeft && sharksize < submarineBottom && !(sharkLeft + 150 < submarineRight - 50)) gameOver();
-            }
-
-            function gameOver() {
-                shark.stop();
-                // gameover 화면 출력
-                $("#gameover").show();
-            }
-
-            function gameStart() {
-                $("#gameover").hide();
-
-                gameRoad();
-            }
-
-            function gameRoad() {
-                // game화면 그리기
-                setInterval(function () {
-                    // 1초에 30번 그리기
-                    moveShark();
-                    // 죽었는지 체크
-                    submarineDead();
-                }, 1000 / 30);
-            }
-
-            $("body").keydown(function (event) {
-                // 잠수함
-                let left = submarine.offset().left;
-                let top = submarine.offset().top;
-                let right = left + 100;
-                let bottom = top + 100;
-                let move = 25; // 이동할 픽셀
-
-                switch (event.key) {
-                    case " ":
-                        jump();
-                        break;
-                }
-            });
-
-            gameStart();
-        </script>
+        <script src="./gameScript.js"></script>
     </body>
 </html>
