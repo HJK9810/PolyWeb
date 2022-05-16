@@ -1,8 +1,7 @@
-const WIDTH = 800;
-const HEIGHT = 500;
-
 let submarine = $("#characters");
 let shark = $("#obstacle");
+let end = $("#gameover");
+let start = $("#gamestart");
 
 let isJumping = false;
 let timeloop;
@@ -44,17 +43,17 @@ function gameOver() {
     clearInterval(timeloop);
     shark.hide();
     // gameover 화면 출력
-    $("#gameover").show();
+    end.show();
 }
 
 function gameReStart() {
-    $("#gameover").hide();
+    end.hide();
     shark.show();
-    $("#gamestart").show();
+    start.show();
 }
 
 function gameStart() {
-    $("#gameover").hide();
+    end.hide();
     shark.show();
 
     gameRoad();
@@ -73,18 +72,18 @@ function gameRoad() {
 
 $(() => {
     // gameover용 img 우선 숨기기
-    $("#gameover").hide();
+    end.hide();
     //  spacebar입력시 user캐릭터 jump
     $("body").keydown(function (event) {
         if (event.key == " ") jump();
     });
     // restart버튼 입력시 재시작
-    $("button").click(function () {
+    $("#resetbtn").click(function () {
         gameReStart();
     });
     // gamestart 클릭시 게임 시작
-    $("#gamestart").click(function () {
-        $("#gamestart").hide();
+    start.click(function () {
+        start.hide();
         gameStart();
     });
 });

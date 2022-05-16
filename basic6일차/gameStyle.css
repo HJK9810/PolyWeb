@@ -29,7 +29,8 @@ h2 {
     display: block;
     margin: 0px auto;
 }
-#gameover button {
+/* gameover시 나타나는 재시작버튼 */
+#resetbtn {
     display: block;
     margin: 20px auto;
     background: none;
