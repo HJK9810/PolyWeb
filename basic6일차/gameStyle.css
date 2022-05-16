@@ -39,6 +39,20 @@ h2 {
     color: whitesmoke;
 }
 
+/* 점수 표시 */
+#score {
+    position: absolute;
+    width: 200px;
+    height: 100px;
+    left: 9px;
+    top: 9px;
+    color: black;
+    font-weight: bold;
+    font-size: large;
+    background: none;
+    border: none;
+}
+
 /* game - user용 잠수함 */
 #characters {
     position: absolute;

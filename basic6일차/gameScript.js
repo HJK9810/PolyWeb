@@ -6,6 +6,8 @@ const start = $("#gamestart");
 let isJumping = false;
 let timeloop;
 
+let score = 0;
+
 function jump() {
     if (isJumping) return;
 
@@ -22,6 +24,7 @@ function moveShark() {
     let shartSpeed = Math.ceil((Math.random() * 2 + 2) * 1000);
     shark.animate({ right: "120%" }, shartSpeed, function () {
         shark.css({ right: `${bomStart}px` });
+        checkScore();
     });
 }
 
@@ -44,6 +47,11 @@ function submarineDead() {
     const submarineLeft = submarineRight - 50;
 
     if (!isJumping && sharkLeft < submarineRight && sharktop < submarineBottom && !(sharkRight < submarineLeft)) gameOver();
+}
+
+function checkScore() {
+    score += 100; // 장애물 피할때 +100점
+    $("#score").text("score : " + score);
 }
 
 function gameOver() {
@@ -75,6 +83,8 @@ function gameLoad() {
         moveShark();
         // 죽었는지 체크
         submarineDead();
+        // 점수 체크
+        // checkScore();
     }, 1000 / 30);
 }
 
