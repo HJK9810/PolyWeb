@@ -36,11 +36,7 @@
                     // key번호 => spacebar : 32 / key => spacebar : ''
                     if (event.key == " ") {
                         // up!
-                        $("#characters").animate({ top: "-=200px" });
-                        setTimeout(() => {
-                            // 원상복귀
-                            $("#characters").animate({ top: "+=200px" });
-                        }, 500);
+                        $("#characters").animate({ top: "-=200px" }, 500).animate({ top: "+=200px" }, 500);
                     }
                 });
                 // 5초마다 생성
