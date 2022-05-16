@@ -67,10 +67,12 @@
                 });
             });
 
-            function checkEamil(email) {
-                let regx = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-                return regx.test(email);
-            }
+            // 아래 함수 arrow function으로 변경
+            const checkEamil = (email) => /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(email);
+            // function checkEamil(email) {
+            //     let regx = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            //     return regx.test(email);
+            // }
         </script>
 
         <form action="">
