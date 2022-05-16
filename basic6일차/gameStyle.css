@@ -39,6 +39,31 @@ h2 {
     color: whitesmoke;
 }
 
+/* pause창 */
+#pause {
+    display: block;
+    position: absolute;
+    width: 50px;
+    right: 0;
+    top: 10px;
+}
+#forPause {
+    position: absolute;
+    top: 200px;
+    left: 250px;
+    padding: 30px 20px 20px 20px;
+    width: 300px;
+    height: 100px;
+    background-color: aliceblue;
+    background-image: none;
+    text-align: center;
+}
+#forPause button {
+    display: inline-block;
+    width: 100px;
+    margin: 20px 10px 5px;
+}
+
 /* 점수 표시 */
 #score {
     position: absolute;

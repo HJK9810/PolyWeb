@@ -119,6 +119,8 @@ $(() => {
     end.hide();
     // 공격용 미사일도 우선 숨기기
     attack.hide();
+    // pause창도 숨기기
+    $("#forPause").hide();
     //  spacebar입력시 user캐릭터 jump
     $("body").keydown(function (event) {
         console.log(event.key);
@@ -128,6 +130,10 @@ $(() => {
     // restart버튼 입력시 재시작
     $("#resetbtn").click(function () {
         gameReStart();
+    });
+    // pause버튼 입력시 all stop
+    $("#pause").click(function () {
+        $("#forPause").show();
     });
     // gamestart 클릭시 게임 시작
     start.click(function () {
