@@ -75,8 +75,11 @@ function sharkDead() {
             .fadeOut(50);
         shark.hide(); // 공격맞은 상어 소멸
         attack.hide(); // 성공한 미사일도 소멸
+        isbullet = false;
         checkScore(true);
     }
+
+    if (attackRight > 800) isbullet = false;
 }
 
 function checkScore(shoot) {
