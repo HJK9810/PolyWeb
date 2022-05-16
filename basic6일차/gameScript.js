@@ -1,7 +1,7 @@
-let submarine = $("#characters");
-let shark = $("#obstacle");
-let end = $("#gameover");
-let start = $("#gamestart");
+const submarine = $("#characters");
+const shark = $("#obstacle");
+const end = $("#gameover");
+const start = $("#gamestart");
 
 let isJumping = false;
 let timeloop;
