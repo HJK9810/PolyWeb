@@ -6,6 +6,7 @@ const start = $("#gamestart");
 
 // 상태용
 let isJumping = false;
+let isbullet = false;
 let timeloop;
 
 let score = 0;
@@ -25,6 +26,7 @@ function moveShark() {
     // 속도 랜덤 카운트 - 2000~4000까지
     let shartSpeed = Math.ceil((Math.random() * 2 + 2) * 1000);
     shark.animate({ right: "120%" }, shartSpeed, function () {
+        shark.show();
         shark.css({ right: `${bomStart}px` });
         checkScore(false);
     });
@@ -37,7 +39,6 @@ function shootAttack() {
         attack.css({ left: `109px` });
         attack.hide();
     });
-    sharkDead();
 }
 
 // gameover check
@@ -66,7 +67,7 @@ function sharkDead() {
     const sharkLeft = shark.offset().left;
     const attackRight = attack.offset().left + 50;
 
-    if (sharkLeft < attackRight) {
+    if (sharkLeft <= attackRight && sharkLeft > 0) {
         $("#bomb")
             .css({ left: `${shark.offset().left}px` })
             .css({ top: `${shark.offset().top}px` })
@@ -118,8 +119,9 @@ function gameLoad() {
     timeloop = setInterval(function () {
         // 1초에 30번 그리기
         moveShark();
-        // 죽었는지 체크
-        submarineDead();
+        // 미사일 맞았는지 체크 - 단, 숨겨져 있을때는 체크X
+        if (isbullet) sharkDead();
+        else submarineDead(); // 죽었는지 체크
     }, 1000 / 30);
 }
 
@@ -148,7 +150,10 @@ function gamePause() {
 $("body").keydown(function (event) {
     // console.log(event.key);
     if (event.key == " ") jump();
-    else if (event.key == "Enter") shootAttack();
+    else if (event.key == "Enter") {
+        isbullet = true;
+        shootAttack();
+    }
 });
 
 // restart버튼 입력시 재시작
