@@ -17,6 +17,21 @@
                 height: 500px;
                 border: 1px black solid;
             }
+            h2 {
+                text-align: center;
+                color: navy;
+            }
+            #gamestart button {
+                display: block;
+                margin: 0px auto;
+                background: none;
+                border: none;
+            }
+            #gamestart img {
+                width: 480px;
+                height: 400px;
+            }
+
             #gameover img {
                 display: block;
                 margin: 0px auto;
@@ -47,6 +62,10 @@
         </style>
 
         <div>
+            <div id="gamestart">
+                <h2>Submarine jump!!</h2>
+                <button><img src="../imgs/gamestart.gif" alt="gamestart" /></button>
+            </div>
             <div id="gameover">
                 <img src="../imgs/gameover.gif" alt="gameover" />
                 <button>Do you want to replay?</button>

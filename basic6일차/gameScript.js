@@ -22,7 +22,7 @@ function jump() {
 function moveShark() {
     // img가 나타날 위치 무작위 생성
     let bomStart = Math.ceil(Math.random() * 200) - 100;
-    shark.animate({ right: "120%" }, 3000, function () {
+    shark.animate({ right: "120%" }, 5000, function () {
         shark.css({ right: `${bomStart}px` });
     });
 }
@@ -46,6 +46,12 @@ function gameOver() {
     $("#gameover").show();
 }
 
+function gameReStart() {
+    $("#gameover").hide();
+    shark.show();
+    $("#gamestart").show();
+}
+
 function gameStart() {
     $("#gameover").hide();
     shark.show();
@@ -64,12 +70,19 @@ function gameRoad() {
     }, 1000 / 30);
 }
 
-$("body").keydown(function (event) {
-    if (event.key == " ") jump();
-});
+$(() => {
+    $("#gameover").hide();
 
-$("button").click(function () {
-    gameStart();
-});
+    $("body").keydown(function (event) {
+        if (event.key == " ") jump();
+    });
 
-gameStart();
+    $("button").click(function () {
+        gameReStart();
+    });
+
+    $("#gamestart").click(function () {
+        $("#gamestart").hide();
+        gameStart();
+    });
+});
