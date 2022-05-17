@@ -2,3 +2,5 @@
 
 <br>
 <h2 align=center> submarine jump : <a href='https://hjk9810.github.io/PolytechWebPract/submarineGame/jumpGame.html'>Game Start!</a></h2>
+<!-- jquery용 script cdn -->
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.js"></script> -->
