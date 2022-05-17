@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>ajaxPract</title>
     </head>
-    <body>
+    <body onload="loadJSON()">
         <script>
             function loadJSON() {
                 fetch("https://jsonplaceholder.typicode.com/todos/1")
@@ -19,7 +19,7 @@
             }
         </script>
 
-        <button id="load" onclick="loadJSON()">데이터 로드</button>
+        <button id="load">데이터 로드</button>
         <ul id="list">
             <li>여기</li>
         </ul>
