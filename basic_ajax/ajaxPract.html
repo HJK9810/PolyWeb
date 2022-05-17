@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            function loadDoc() {
+                // 주의!!! 서버에 올라간 상태에서만 작동!! => 내부 webserver라도 작동할 필요 있음
+                let xhttp = new XMLHttpRequest(); // 객체생성
+                xhttp.onreadystatechange = function () {
+                    /**
+                     *  ** this.readyState == 4 => 정상완료
+                     *  https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/readyState
+                     *
+                     *  ** this.status == 200 => 서버 입장에서 정상 연결
+                     *  if this.status == 404 ? 서버 연결 X (Not Founc)
+                     *  https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+                     */
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("demo").innerHTML = this.responseText;
+                    }
+                };
+                // 통신 방식이나 대상 선택 => GET(read), POST(write), UPDATE, DELETE, ....
+                // https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods
+                xhttp.open("GET", "ajax_info.txt", true);
+                xhttp.send();
+            }
+        </script>
+
+        <div id="demo"></div>
+        <button onclick="loadDoc()">get data</button>
+    </body>
+</html>
