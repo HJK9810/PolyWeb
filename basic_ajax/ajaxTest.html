@@ -6,22 +6,37 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>ajaxPract</title>
     </head>
-    <body onload="loadJSON()">
+    <body">
         <script>
             function loadJSON() {
-                fetch("https://jsonplaceholder.typicode.com/todos/1")
+                fetch("https://jsonplaceholder.typicode.com/todos")
                     .then((respense) => respense.json())
-                    .then((json) => {
-                        let li = document.createElement("li");
-                        li.innerHTML = json.title;
-                        document.getElementById("list").appendChild(li);
+                    .then((jsonAry) => {
+                        
+                        // for-of문 사용
+                        for (const el of jsonAry) {
+                            let li = document.createElement("li");
+                            li.innerHTML = el.title;
+                            document.getElementById("list").appendChild(li);
+                        }
+                        // forEach문 사용
+                        // jsonAry.forEach(el => {
+                        //     let li = document.createElement("li");
+                        //     li.innerHTML = el.title;
+                        //     document.getElementById("list").appendChild(li);
+                        // });
+                        // for문 사용
+                        // for(let i=0;i<jsonAry.length;i++) {
+                        //     let li = document.createElement("li");
+                        //     li.innerHTML = jsonAry[i].title;
+                        //     document.getElementById("list").appendChild(li);
+                        // }
                     });
             }
         </script>
 
-        <button id="load">데이터 로드</button>
+        <button id="load" onclick="loadJSON()">데이터 로드</button>
         <ul id="list">
-            <li>여기</li>
         </ul>
     </body>
 </html>
