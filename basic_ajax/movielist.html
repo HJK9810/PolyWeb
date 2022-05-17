@@ -45,6 +45,10 @@
                 loadJSON();
             });
 
+            function moveCommentsPage(postId) {
+                window.location.href = `movieDetails.html?id=${postId}`;
+            }
+
             function loadJSON() {
                 fetch("https://api.themoviedb.org/3/movie/upcoming?api_key=a64533e7ece6c72731da47c9c8bc691f&language=ko-KR&page=1")
                     .then((respense) => respense.json())
@@ -53,7 +57,7 @@
                         let imgURL = "https://image.tmdb.org/t/p/w500";
                         // forEach문 사용
                         json.results.forEach((data) => {
-                            items.append(`<div class="card">
+                            items.append(`<div class="card" onclick="moveCommentsPage(${data.id})">
                             <img src="${imgURL + data.backdrop_path}" alt="poster" style="width: 100%" />
                             <div class="container">
                                 <p>${data.title}</p>

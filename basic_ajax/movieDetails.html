@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Details</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    </head>
+    <body>
+        <style>
+            table {
+                background-color: #f3f3f3;
+                border: 1px #dedede dotted;
+                border-collapse: collapse;
+                width: 700px;
+            }
+            tr,
+            td {
+                border: 1px #dedede dotted;
+                padding: 5px;
+            }
+
+            h1 {
+                color: navy;
+            }
+            img {
+                width: 300px;
+                height: 500px;
+            }
+
+            #container {
+                width: 100%;
+                height: 100px;
+                vertical-align: top;
+            }
+            #openDate {
+                margin: 20px 5px;
+                font-weight: bold;
+            }
+            #container div {
+                display: inline;
+                background-color: cornflowerblue;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+                color: whitesmoke;
+                padding: 10px;
+                margin: 20px 5px;
+                border-radius: 5px;
+            }
+        </style>
+
+        <script>
+            $(() => {
+                const queryString = window.location.search;
+                const parameter = new URLSearchParams(queryString);
+                const id = parameter.get("id");
+
+                fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=a64533e7ece6c72731da47c9c8bc691f&language=ko-KR&page=1`)
+                    .then((respense) => respense.json())
+                    .then((json) => {
+                        let result = json.results; // 일단 배열로 가져오기
+                        let imgURL = "https://image.tmdb.org/t/p/w500";
+                        let idx = result.findIndex((el) => id == el.id); // 인덱스 찾기
+                        let data = result[idx];
+
+                        $("#movie").append(`<table><tr>
+                                <td colspan="2"><h1>${data.title}</h1></td>
+                            </tr>
+                            <tr>
+                                <td><img src="${imgURL + data.backdrop_path}" alt="poster" /></td>
+                                <td id="container">
+                                    <p id="openDate">개봉일 : ${data.release_date}</p>
+                                    <div id="watcher"> ✔ ${data.vote_count}</div>
+                                    <div id="average"> ★ ${data.vote_average}</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><p id="describe">${data.overview}</p></td>
+                            </tr></table>`);
+                    });
+            });
+        </script>
+
+        <div id="movie"></div>
+    </body>
+</html>
