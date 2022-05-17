@@ -7,6 +7,7 @@ const start = $("#gamestart");
 // 상태용
 let isJumping = false;
 let isbullet = false;
+let sharkhid = false;
 let timeloop;
 
 let score = 0;
@@ -15,7 +16,7 @@ function jump() {
     if (isJumping) return;
 
     isJumping = true;
-    submarine.animate({ bottom: "+=200px" }, 500).animate({ bottom: "-=200px" }, 1000, () => {
+    submarine.animate({ bottom: "+=150px" }, 500).animate({ bottom: "-=150px" }, 1000, () => {
         isJumping = false;
     });
 }
@@ -27,6 +28,7 @@ function moveShark() {
     let shartSpeed = Math.ceil((Math.random() * 2 + 2) * 1000);
     shark.animate({ right: "120%" }, shartSpeed, function () {
         shark.show();
+        sharkhid = false;
         shark.css({ right: `${bomStart}px` });
         checkScore(false);
     });
@@ -59,7 +61,14 @@ function submarineDead() {
     const sharkRight = sharkLeft + 100;
     const submarineLeft = submarineRight - 100;
 
-    if (!isJumping && sharkLeft < submarineRight && sharktop < submarineBottom && !(sharkRight < submarineLeft)) gameOver();
+    if (!isJumping && sharkLeft < submarineRight && sharktop < submarineBottom && !(sharkRight < submarineLeft)) {
+        $("#bomb") // 폭파 이펙트
+            .css({ left: `${shark.offset().left}px` })
+            .css({ top: `${shark.offset().top}px` })
+            .fadeIn(50)
+            .fadeOut(50);
+        gameOver();
+    }
 }
 
 // 미사일 hit check
@@ -68,12 +77,13 @@ function sharkDead() {
     const attackRight = attack.offset().left + 50;
 
     if (sharkLeft <= attackRight && sharkLeft > 0) {
-        $("#bomb")
+        $("#bomb") // 폭파 이펙트
             .css({ left: `${shark.offset().left}px` })
             .css({ top: `${shark.offset().top}px` })
             .fadeIn(50)
             .fadeOut(50);
         shark.hide(); // 공격맞은 상어 소멸
+        sharkhid = true;
         attack.hide(); // 성공한 미사일도 소멸
         isbullet = false;
         checkScore(true);
@@ -93,6 +103,7 @@ function gameOver() {
     shark.stop(true, true);
     clearInterval(timeloop);
     shark.hide();
+    sharkhid = true;
     // gameover 화면 출력
     end.show();
 }
@@ -124,7 +135,7 @@ function gameLoad() {
         moveShark();
         // 미사일 맞았는지 체크 - 단, 숨겨져 있을때는 체크X
         if (isbullet) sharkDead();
-        else submarineDead(); // 죽었는지 체크
+        else if (!sharkhid) submarineDead(); // 죽었는지 체크
     }, 1000 / 30);
 }
 
