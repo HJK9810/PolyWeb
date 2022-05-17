@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            /**
+             * fetch(파일명).then(각 동작)
+             */
+
+            // 일반 함수 : function funName () {}
+            // arrow 함수 = 람다함수 : const funName = () => {}
+            function loadDoc(check) {
+                if (check) {
+                    // txt 파일 출력
+                    fetch("ajax_info.txt")
+                        .then((response) => response.text())
+                        .then((json) => {
+                            document.getElementById("demo").innerHTML = json;
+                            console.log(json);
+                        });
+                } else {
+                    // json 파일 출력
+                    fetch("people.json")
+                        .then((response) => response.json())
+                        .then((json) => {
+                            // json 전체 data 가져오기
+                            // document.getElementById("demo").innerHTML = JSON.stringify(json);
+                            console.log(json);
+                            // json 부분 data 가져오기
+                            document.getElementById("demo").innerHTML = json.name;
+                            document.getElementById("result").innerHTML = json.skill;
+                        });
+                }
+            }
+        </script>
+
+        <div id="demo"></div>
+        <div id="result"></div>
+        <button onclick="loadDoc(false)">get data json</button>
+        <button onclick="loadDoc(true)">get data txt</button>
+    </body>
+</html>
