@@ -56,14 +56,27 @@ h2 {
     padding: 30px 20px 20px 20px;
     width: 300px;
     height: 100px;
+    /* 배경 */
     background-color: aliceblue;
+    background-color: rgba(255, 255, 255, 0.5);
     background-image: none;
+    /* 경계선 */
+    border: 2px navy solid;
+    border-radius: 10px;
+    /* text */
     text-align: center;
+    font-weight: bold;
+    color: navy;
 }
 #forPause button {
     display: inline-block;
     width: 100px;
+    height: 40px;
     margin: 20px 10px 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    /* 경계선 */
+    border: 2px navy solid;
+    border-radius: 10px;
 }
 
 /* 점수 표시 */
