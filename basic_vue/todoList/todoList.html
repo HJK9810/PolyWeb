@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="./todolist.css" />
+        <link rel="stylesheet" type="text/css" href="./form.css" />
+        <link rel="stylesheet" type="text/css" href="./todoitem.css" />
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <meta charset="UTF-8" />
+        <title>Todo List</title>
+    </head>
+
+    <body>
+        <div class="todo-list-template" id="app">
+            <div class="title">오늘 할 일</div>
+
+            <section class="form-wrapper">
+                <div class="form">
+                    <input name="text" id="text" v-model="inputWork" ref="input" v-on:keyup.enter="addTodo()" />
+                    <div class="create-button" v-on:click="addTodo()">추가</div>
+                </div>
+            </section>
+
+            <section class="todos-wrapper" v-for="todo in todoList">
+                <div class="todo-item" v-on:click="setDone(todo.id)">
+                    <div class="remove" v-on:click="remove(todo.id);">&times;</div>
+                    <div class="todo-text" :class="{ checked : todo.isDone }">{{todo.task}}</div>
+                    <div class="check-mark" v-if="todo.isDone">&#x2713;</div>
+                </div>
+            </section>
+        </div>
+
+        <script>
+            const app = new Vue({
+                el: "#app",
+                data: {
+                    id: 0,
+                    inputWork: "",
+                    todoList: [],
+                },
+                created: function () {},
+                methods: {
+                    setDone: function (id) {
+                        const idx = this.todoList.findIndex((el) => el.id == id);
+                        this.todoList[idx].isDone = !this.todoList[idx].isDone;
+                    },
+                    addTodo: function () {
+                        if (this.inputWork) {
+                            let obj = {
+                                id: (this.id += 1),
+                                task: this.inputWork,
+                                isDone: false,
+                            };
+
+                            this.todoList.push(obj);
+                            this.inputWork = "";
+                        }
+                    },
+                    remove: function (id) {
+                        const idx = this.todoList.findIndex((el) => el.id == id);
+                        this.todoList.splice(idx);
+                    },
+                },
+                watch: {
+                    inputWork: function (val) {
+                        this.inputWork = val;
+                    },
+                },
+            });
+        </script>
+    </body>
+</html>
