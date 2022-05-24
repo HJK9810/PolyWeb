@@ -28,7 +28,7 @@
                     // 통신
                     this.getPosts();
                     // 디바운스 적용된 검색 함수 정의
-                    this.dibouncedSearch = _.debounce(this.search(), 1000);
+                    this.debouncedSearch = _.debounce(this.search, 500);
                 },
                 methods: {
                     getPosts: function () {
@@ -46,7 +46,7 @@
                 },
                 watch: {
                     query: function (val) {
-                        this.dibouncedSearch(val);
+                        this.debouncedSearch(val);
                     },
                 },
             });
