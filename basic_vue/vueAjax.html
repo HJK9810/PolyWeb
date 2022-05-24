@@ -9,8 +9,9 @@
     </head>
     <body>
         <div id="app">
+            <input v-model="query" placeholder="검색어" />
             <ul>
-                <li v-for="post in posts">{{post.title}}</li>
+                <li v-for="post in fillteredPosts">{{post.title}}</li>
             </ul>
         </div>
 
@@ -18,7 +19,9 @@
             const app = new Vue({
                 el: "#app",
                 data: {
-                    posts: [],
+                    query: "",
+                    posts: [], // 전체 데이터
+                    fillteredPosts: [], // 검색 조건에 맞는 데이터
                 },
                 created: function () {
                     // 통신
@@ -31,7 +34,13 @@
                             .then((response) => response.json())
                             .then((json) => {
                                 v_main.posts = json;
+                                v_main.fillteredPosts = json;
                             });
+                    },
+                },
+                watch: {
+                    query: function (val) {
+                        this.fillteredPosts = this.posts.filter((post) => post.title.includes(val));
                     },
                 },
             });
