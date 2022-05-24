@@ -28,6 +28,8 @@
                 created: function () {
                     // 통신
                     this.getPosts();
+                    // 디바운스 적용된 검색 함수 정의
+                    this.debouncedSearch = _.debounce(this.searchCheck, 500);
                 },
                 methods: {
                     getPosts: function () {
@@ -46,10 +48,13 @@
                                 v_main.fillteredPosts = ary;
                             });
                     },
+                    searchCheck: function (val) {
+                        this.fillteredPosts = this.posts.filter((post) => post.includes(val));
+                    },
                 },
                 watch: {
                     search: function (val) {
-                        this.fillteredPosts = this.posts.filter((post) => post.includes(val));
+                        this.debouncedSearch(val);
                     },
                 },
             });
