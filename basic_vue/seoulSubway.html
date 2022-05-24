@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>지하철 검색</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    </head>
+    <body>
+        <div id="subway">
+            역 이름 :
+            <input v-model="search" placeholder="검색어" />
+            <ul>
+                <li v-for="post in fillteredPosts">{{post}}</li>
+            </ul>
+        </div>
+
+        <script>
+            const app = new Vue({
+                el: "#subway",
+                data: {
+                    search: "",
+                    posts: [], // 전체 데이터
+                    fillteredPosts: [], // 검색 조건에 맞는 데이터
+                },
+                created: function () {
+                    // 통신
+                    this.getPosts();
+                },
+                methods: {
+                    getPosts: function () {
+                        const v_main = this;
+                        fetch("http://swopenapi.seoul.go.kr/api/subway/sample/json/realtimeStationArrival/0/5/%EC%84%9C%EC%9A%B8")
+                            .then((response) => response.json())
+                            .then((json) => {
+                                let ary = []; // 분류용 빈 배열
+
+                                // 검색을 위해 각 배열은 문자열로 input => '지하철방향, 현재위치' 형식
+                                json.realtimeArrivalList.forEach((element) => {
+                                    ary.push(`${element.trainLineNm}, ${element.arvlMsg2}`);
+                                });
+
+                                v_main.posts = ary;
+                                v_main.fillteredPosts = ary;
+                            });
+                    },
+                },
+                watch: {
+                    search: function (val) {
+                        this.fillteredPosts = this.posts.filter((post) => post.includes(val));
+                    },
+                },
+            });
+        </script>
+    </body>
+</html>
