@@ -12,6 +12,7 @@
         <div id="subway">
             역 이름 :
             <input v-model="search" placeholder="검색어" />
+            <div>{{message}}</div>
             <ul>
                 <li v-for="post in realtimeArrivalList">{{post.trainLineNm}}, {{post.arvlMsg2}}</li>
             </ul>
@@ -22,6 +23,7 @@
                 el: "#subway",
                 data: {
                     search: "",
+                    message: "",
                     realtimeArrivalList: [], // 전체 데이터
                 },
                 created: function () {
@@ -37,11 +39,13 @@
                             .then((response) => response.json())
                             .then((json) => {
                                 vm.realtimeArrivalList = json.realtimeArrivalList;
+                                vm.message = ""; // 통신 종료시 로딩메시지 제거
                             });
                     },
                 },
                 watch: {
                     search: function (val) {
+                        this.message = "로딩...."; // 통신 시작시 로딩메시지 보이기
                         this.debouncedSearch(val);
                     },
                 },
